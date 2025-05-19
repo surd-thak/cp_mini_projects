@@ -1,0 +1,139 @@
+📌 all learnings here
+
+// const, reference, stream, friend function, self.operator
+
+// deep copy, shallow copy
+
+
+🔹  POLYMORPHISM
+
+    🔍 example use case of runtime polymorphism
+        PaymentMethod* p = new PayPalPayment();
+        checkout(p);  // prints: Processing PayPal...
+        p = new CreditCardPayment();
+        checkout(p);  // prints: Processing credit card...
+        ✅ Upcasting is safe and supported natively in C++.
+        -another way for initializing, atleast one virtual function
+        Derived* derived = dynamic_cast<Derived*>(base);
+
+    ❌ Common Mistakes with Pointers in Polymorphism
+        | Mistake                     | What Happens                | Fix                        |
+        | --------------------------- | --------------------------- | -------------------------- |
+        | Not using virtual functions | No dynamic dispatch         | Add `virtual`              |
+        | Object slicing              | Loss of derived data        | Use pointer/reference      |
+        | Missing virtual destructor  | Resource leaks              | Declare destructor virtual |
+        | Incorrect casting           | Undefined behavior or crash | Use `dynamic_cast`         |
+        | Deleting wrong type         | Double-delete or leak       | Prefer smart pointers      |
+
+    ⚡️ Summary — What Makes This Powerful?
+        ✅ Extensibility: You can add GooglePayPayment, BitcoinPayment, etc., without changing checkout.
+        ✅ Separation of Concerns: Behavior (like process()) is encapsulated in each class, not scattered.
+        ✅ Flexibility at Runtime: You can select or create the object type at runtime (based on config, user input, etc.).
+        ✅ Object-Oriented Design: Encourages polymorphic behavior, modular code, and testability.
+
+    🛠 Pseudocode for conceptual understanding
+        LOAD [payment] → base object
+        LOAD [base object + vptr offset] → vtable pointer
+        LOAD [vtable + offset for 'process'] → function pointer
+        JUMP to function pointer
+
+
+
+// rvalue reference
+    | Concept                | Description                                  | Key Tool            |
+    | ---------------------- | -------------------------------------------- | ------------------- |
+    | **lvalue**             | Has name, location                           | Can assign to       |
+    | **rvalue**             | Temporary, no name                           | Move from it        |
+    | **move semantics**     | Transfer resources from temporary            | `std::move()`       |
+    | **perfect forwarding** | Generic transfer with correct value category | `std::forward<T>()` |
+    | `T&&`                  | Rvalue reference (can move from it)          | Used in move c'tor  |
+    | `T&&` in template      | Universal reference                          | Used in forwarding  |
+
+    && bind to temporary objects, enabling move semantics
+
+    | Pattern                     | Use When…                                                            |
+    | --------------------------- | -------------------------------------------------------------------- |
+    | `T&&` + `std::move()`       | You want to **move** into a member or container                      |
+    | `T&&` + `std::forward<T>()` | You want to **forward** a parameter to another constructor or method |
+
+    
+// smart pointers   
+    std::unique_ptr: Single ownership
+    std::shared_ptr: Reference counting
+    std::weak_ptr: Non-owning reference to shared_ptr
+
+
+
+// references vs pointers
+
+| Concept               | Description                                  |
+| --------------------- | -------------------------------------------- |
+| Pointers              | Variables storing memory addresses           |
+| References            | Aliases, must be initialized, cannot be null |
+| Dereferencing         | Accessing the value a pointer points to      |
+| Address-of (`&`)      | Gets memory address of a variable            |
+| Pointer arithmetic    | Works in units of the pointed-to type        |
+| Dangling pointers     | Pointers to deleted/out-of-scope memory      |
+| Null pointers         | Represent no valid target                    |
+| Smart pointers        | RAII wrappers for safer memory management    |
+| Function pointers     | Useful for callbacks, plugin systems         |
+| Alignment and padding | Crucial for struct layout and performance    |
+
+
+//template
+    - C++ templates are independent units. Even inside a templated class, each function
+      must explicitly state when it depends on a new template parameter.
+    - At the point the compiler is parsing this, it does not know what T is yet.
+      If T::something is a type, we need to tell the compiler:
+      🔖 "something is a type, not a variable."
+    - value_type is a typedef/alias inside containers that tells what kind of object they hold.
+
+//implicit, explicit
+
+//copy constructor vs copy assignment operator
+
+// rule 3 : Copy constructor, Copy assignment, Destructor
+
+// rule 5 : Copy constructor, Copy assignment, Move constructor, Move assignment, Destructor
+
+// push_back vs emplace_back
+
+// unit testing
+    correctness of code at the smallest possible unit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Discipline
+    // discipline is not about just will power or motivation
+    // prefrontal cortex : impulse control and long time planning
+    // stritum : routine habits
+    // amygdyla : brain's response to env activites 
+    // your decisions are taken by pfc but amygdyla constantly interrupts then pfc will not be able to take desired decisions for long
+    // **if discipline is a decision you have to take again and again most likely you wont succeed**
+    // 1. env changes : most imp, all elements in env should align to your desired goals 
+    // 2. reduce friction : cognitive fatigue, less chice less fatigue for pfc
+    // 3. behav change to get some act done : {make it obv, make it attractive,  make it easy, make it satisfying}
+    // 4. people : all the people, books, information you take affect your thoughts and decisions
+    // 5. discipline? : not an output i.e. not something you bring to env but input i.e. something that your env bring to you
+ */
