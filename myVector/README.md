@@ -1,4 +1,6 @@
 # myVector
+CMake is not yet used for build, manual compilaion is used for now.
+
 
 ## Features Requirements:
 
@@ -10,19 +12,19 @@
         - [x] (size_t (optional), initial_value (optional))
         - [x] (MyVec) -> copy functionality
         - [x] Destruct
-    - [ ] test set up //18 may
-    - [ ] CMake //18 may
+    - [ ] test set up 
+    - [ ] CMake 
     - [x] access - [ ]> (size_t) - [ ]> T
     - [x] push_back (value: T) -> void -- log.. increase
     - [x] pop_back
     - [x] resize
     - [x] empty()
-    - [ ] size 
-    - [ ] > ()
+    - [x] size 
+    - [x] > ()
     - [x] if (v1 < v2) - [ ]- [ ] size / (lexi*)
     - [x] v1 == v2
     - [x] v1 = v2 assign
-    - [ ] [index]  -> access
+    - [x] [index]  -> access
     - [x] cout << v1 <<
    
 
