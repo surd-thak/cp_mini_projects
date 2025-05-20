@@ -17,12 +17,13 @@
     - [x] pop_back
     - [x] resize
     - [x] empty()
-    - [ ] size - [ ] > ()
-    - [ ] if (v1 < v2) - [ ]- [ ] size / (lexi*)
-    - [ ] v1 == v2
-    - [ ] v1 = v2 assign
-    - [ ] [index]  - [ ]> access
-    - [ ] cout << v1 <<
+    - [ ] size 
+    - [ ] > ()
+    - [x] if (v1 < v2) - [ ]- [ ] size / (lexi*)
+    - [x] v1 == v2
+    - [x] v1 = v2 assign
+    - [ ] [index]  -> access
+    - [x] cout << v1 <<
    
 
 
@@ -34,4 +35,5 @@
 - [x] references vs pointers
 - [ ] unit tests in c++
 - [ ] build c++
-- [ ] 
+- [ ] reserve 
+- [ ] emplace back

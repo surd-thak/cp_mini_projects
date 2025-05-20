@@ -2,15 +2,6 @@
 #ifndef myVectorHpp
 #define myVectorHpp
 
-/*
-    ToDo read more on:
-// polymorphism --> compile time or runtime
-// compile time --> tempelate, function overloading, operator overloading
-// runtime time --> inheritance class
-// reference vs pointer (also in context of runtime poly)
-// 
-*/
-
 #include<cstddef> //to use size_t
 
 template<typename T> //generics, why typename token is required
@@ -37,11 +28,12 @@ class myVector{
         void pop_back();
         void resize(size_t newSize,T default_value = T());
         bool empty();
+        size_t size();
 
 
         //operator overloading
         T& operator[] (size_t index);
-        void operator= (const myVector<T>& given);
+        myVector<T>& operator= (const myVector<T>& given);
         bool operator== (const myVector& given);
         bool operator< (const myVector& given);
         bool operator> (const myVector& given);
